@@ -2,8 +2,10 @@
 import React from "react";
 import { useParams, notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Globe, Calendar } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+
 // Sample project data
 const projects = [
   {
@@ -96,7 +98,18 @@ export default function ProjectDetail() {
       </Link>
 
       <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md">
-        <div className="h-64 md:h-96 bg-gray-300 dark:bg-gray-700"></div>
+        <div className="relative h-64 md:h-96 w-full">
+          <Image 
+            src={'/img/toko.jpg'} 
+            alt={project.title}
+            fill
+            className="object-cover"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/placeholder-image.jpg";
+            }}
+          />
+        </div>
 
         <div className="p-6 md:p-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">

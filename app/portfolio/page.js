@@ -2,6 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Sample project data
 const projects = [
@@ -106,7 +107,18 @@ export default function Portfolio() {
             key={project.id}
             className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
           >
-            <div className="h-48 bg-gray-300 dark:bg-gray-700"></div>
+            <div className="relative h-48 w-full">
+              <Image 
+                src={'/img/toko.jpg'} 
+                alt={project.title}
+                fill
+                className="object-cover"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "/placeholder-image.jpg";
+                }}
+              />
+            </div>
             <div className="p-6">
               <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
                 {project.title}

@@ -10,9 +10,8 @@ export default function CommentSection() {
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState("");
   const [page, setPage] = useState(1);
-  const [commentsPerPage] = useState(5); // Jumlah komentar per halaman
 
-  // Fungsi untuk menghitung rata-rata rating   
+  // Fungsi untuk menghitung rata-rata rating
   const calculateAverageRating = () => {
     if (comments.length === 0) return 0;
     const totalRating = comments.reduce(
